@@ -23,7 +23,7 @@ ADD ./maintenance-page /www/maintenance-page
 ADD ./ssl-provision /ssl-provision
 ADD ./entry-point.sh /entry-point.sh
 
-CMD ["bash /entry-point.sh"]
+CMD ["/bin/bash", "/entry-point.sh"]
 
 EXPOSE 80
 EXPOSE 443
