@@ -19,11 +19,11 @@ RUN addgroup -g 1000 production \
     && adduser -u 1000 -H -D -s /bin/sh -G production production
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-ADD ./maintenance-page /var/www/maintenance-page
+COPY ./maintenance-page /var/www/maintenance-page
 RUN chown production:production /var/www/maintenance-page -R
 
-ADD ./ssl-provision /ssl-provision
-ADD ./entry-point.sh /entry-point.sh
+COPY ./ssl-provision /ssl-provision
+COPY ./entry-point.sh /entry-point.sh
 
 CMD ["/bin/bash", "/entry-point.sh"]
 
