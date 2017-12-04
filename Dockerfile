@@ -20,6 +20,8 @@ RUN addgroup -g 1000 production \
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD ./maintenance-page /var/www/maintenance-page
+RUN chown production:production /var/www/maintenance-page -R
+
 ADD ./ssl-provision /ssl-provision
 ADD ./entry-point.sh /entry-point.sh
 
