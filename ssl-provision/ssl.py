@@ -98,6 +98,7 @@ class NginxSSLProvision:
         print(' >> Running maintenance nginx')
         self.kill_nginx()
         os.system("nginx -c /ssl-provision/nginx.conf &")
+        self.__maintenance_nginx_running = True
 
     def run_target_nginx(self):
         """
@@ -107,6 +108,7 @@ class NginxSSLProvision:
 
         print(' >> Running target nginx')
         self.kill_nginx()
+        self.__maintenance_nginx_running = False
         os.system("nginx -g \"daemon off;\"")
 
     def kill_nginx(self):
