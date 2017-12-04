@@ -40,7 +40,7 @@ To override supervisord configuration just add a file:
 
 ## Overriding maintenance page
 
-Add your replacement file to the `/www/maintenance-page/index.html` to replace the default maintenance page.
+Add your replacement file to the `/var/www/maintenance-page/index.html` to replace the default maintenance page.
 
 ## Overriding maintenance mode nginx configuration
 
