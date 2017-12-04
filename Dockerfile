@@ -19,7 +19,7 @@ RUN addgroup -g 1000 production \
     && adduser -u 1000 -H -D -s /bin/sh -G production production
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-ADD ./maintenance-page /www/maintenance-page
+ADD ./maintenance-page /var/www/maintenance-page
 ADD ./ssl-provision /ssl-provision
 ADD ./entry-point.sh /entry-point.sh
 
