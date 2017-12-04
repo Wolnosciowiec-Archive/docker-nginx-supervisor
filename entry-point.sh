@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#
+# Allows to delete development-time specific configuration
+#
 remove_other_environment_configs () {
     if [[ "${IS_DEV}" == "1" ]]; then
         echo " >> Development environment detected, switching domains to dev"
