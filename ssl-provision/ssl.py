@@ -16,6 +16,7 @@ class NginxSSLProvision:
         return self.__missing_files
 
     def __validate_configuration_files(self, directory):
+        self.__missing_files = []
         files = glob(directory + '/*.conf')
 
         for file in files:
@@ -63,7 +64,7 @@ class NginxSSLProvision:
         :return:
         """
 
-        if not os.path.isfile(block_content):
+        if not os.path.isfile(block_content) and block_content not in self.__missing_files:
             self.__missing_files.append(block_content)
 
     def __parse_server_name(self, block_content):
@@ -82,7 +83,7 @@ class NginxSSLProvision:
         for domain in domains:
             certificate_path = self.__certificates_path.replace('%s', domain)
 
-            if not os.path.isfile(certificate_path):
+            if not os.path.isfile(certificate_path) and certificate_path not in self.__missing_files:
                 self.__missing_files.append(certificate_path)
 
     def run_maintenance_nginx(self):
