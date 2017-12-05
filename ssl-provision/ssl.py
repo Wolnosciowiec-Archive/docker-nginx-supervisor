@@ -141,4 +141,4 @@ class NginxSSLProvision:
             time.sleep(1)
 
 provision = NginxSSLProvision()
-provision.listen('../sites-enabled')
+provision.listen('/etc/nginx/sites-enabled')
