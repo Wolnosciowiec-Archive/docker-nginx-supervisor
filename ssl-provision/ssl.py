@@ -30,7 +30,11 @@ class NginxSSLProvision:
         server_blocks = re.findall(r'server\ \{(.*)\}', contents, re.DOTALL)
 
         for block in server_blocks:
-            self.__parse_server_block(block)
+            # the regexp is sometimes joining a few server {} blocks into one, so just-in-case we can separate them
+            sub_blocks = block.split('server {')
+
+            for sub_block in sub_blocks:
+                self.__parse_server_block(sub_block)
 
     def __parse_server_block(self, block_content):
         """
