@@ -129,6 +129,9 @@ class NginxSSLProvision:
         while True:
             self.__validate_configuration_files(directory)
 
+            print('>> Missing files:')
+            print(self.missing_files)
+
             if len(self.missing_files) > 0:
                 self.run_maintenance_nginx()
             else:
